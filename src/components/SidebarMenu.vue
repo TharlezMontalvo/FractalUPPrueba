@@ -1,6 +1,11 @@
 <template>
   <div class="d-flex">
-    <div id="sidebar" class="bg-gray border">
+    <!-- Icono de menú para dispositivos móviles -->
+    <button class="btn btn-outline-light d-md-none" @click="toggleSidebar">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div id="sidebar" class="bg-gray border" :class="{ 'sidebar-hidden': sidebarHidden }">
       <div class="p-3 text-center">
         <div class="logo-container">Logo</div>
       </div>
@@ -16,7 +21,8 @@
         </li>
       </ul>
     </div>
-    <div id="content">
+
+    <div id="content" class="flex-grow-1">
       <router-view></router-view>
     </div>
   </div>
@@ -25,9 +31,17 @@
 <script>
 export default {
   name: 'SidebarMenu',
+  data() {
+    return {
+      sidebarHidden: true, // Estado inicial del sidebar
+    };
+  },
   methods: {
     isActive(path) {
       return this.$route.path === path;
+    },
+    toggleSidebar() {
+      this.sidebarHidden = !this.sidebarHidden;
     },
   },
 };
@@ -43,6 +57,7 @@ export default {
   left: 0;
   z-index: 1000;
   overflow-y: auto; 
+  transition: transform 0.3s ease;
 }
 
 .logo-container {
@@ -83,17 +98,29 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .btn-menu {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1100; 
+  }
+
   #sidebar {
-    width: 100%;
-    position: relative;
-    min-height: auto;
-    overflow-y: hidden; 
-    border-right: none; 
+    transform: translateX(-100%); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow-y: auto; 
+  }
+
+  .sidebar-hidden {
+    transform: translateX(-100%); 
   }
 
   #content {
-    margin-left: 0; 
-    padding: 10px; 
+    margin-left: 0;
+    padding: 20px;
   }
 
   .logo-container {

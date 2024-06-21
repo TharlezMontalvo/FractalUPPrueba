@@ -36,7 +36,7 @@ export default {
 <style scoped>
 .continent-filter {
   position: fixed;
-  top: 55%;
+  top: 56%;
   left: 30%;
   width: 100%;
   max-width: 700px;
