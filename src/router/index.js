@@ -1,0 +1,29 @@
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../views/Home.vue';
+import Vista1 from '../views/Vista1.vue';
+import Vista2 from '../views/Vista2.vue';
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/vista1',
+    name: 'Vista1',
+    component: Vista1,
+  },
+  {
+    path: '/vista2',
+    name: 'Vista2',
+    component: Vista2,
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
+
+export default router;
