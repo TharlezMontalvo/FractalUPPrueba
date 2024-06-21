@@ -1,4 +1,6 @@
 # prueba
+Postulante: Diego Tharlez Montalvo Ortega
+Tecnologías: Vue.js, Bootstrap, GraphQL, Apollo.
 
 ## Project setup
 ```
